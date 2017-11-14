@@ -1,0 +1,26 @@
+{
+    "name": "travis-south/retre",
+    "description": "Retrieves repo information on your favourite Git repository hosting service",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Irvin Capagcuan",
+            "email": "irvin@capagcuan.org"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "^6.3.0",
+        "seld/jsonlint": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "TravisSouth\\Retre\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.3"
+    }
+}

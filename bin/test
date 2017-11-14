@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+use TravisSouth\Retre\Git;
+use TravisSouth\Retre\Adapters\Gitlab\Initialize;
+
+require __DIR__.'/../vendor/autoload.php';
+
+$gitlab = new Initialize('https://gitlab.com', 'asdfasdf');
+$git = new Git($gitlab);
+
+dump($git->getGroupInfo('foo'));
+dump($git->getRepos('foo'));
+dump($git->getRepoInfo('bar'));
+dump($git->getRepoId('bar'));
