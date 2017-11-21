@@ -16,7 +16,7 @@ class Groups extends Gitlab implements GroupsAdapterInterface
             throw new \BadMethodCallException('group cannot be empty!');
         }
 
-        $response = $this->client->get(self::GROUPS . '?per_page=100&search=' . $group);
+        $response = $this->client->get(self::GROUPS . '?per_page=100&order_by=name&sort=asc&search=' . $group);
 
         if ($response->getStatusCode() != 200) {
             throw new \DomainException('Invalid response code: ' . $response->getStatusCode());

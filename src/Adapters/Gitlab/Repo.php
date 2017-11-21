@@ -16,7 +16,7 @@ class Repo extends Gitlab implements RepoAdapterInterface
             throw new \BadMethodCallException('repo cannot be empty!');
         }
 
-        $response = $this->client->get(self::PROJECTS . '?per_page=100&search=' . $repo);
+        $response = $this->client->get(self::PROJECTS . '?per_page=100&membership=true&order_by=name&sort=asc&search=' . $repo);
 
         if ($response->getStatusCode() != 200) {
             throw new \DomainException('Invalid response code: ' . $response->getStatusCode());
