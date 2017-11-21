@@ -24,7 +24,7 @@ class Groups extends Gitlab implements GroupsAdapterInterface
 
         $result = $this->getResponse($response);
         if (count($result) == 0) {
-            throw new \DomainException('Group not found');
+            throw new \DomainException('Group ' . $group . ' not found');
         }
 
         return $result[0];

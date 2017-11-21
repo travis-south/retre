@@ -24,7 +24,7 @@ class Repo extends Gitlab implements RepoAdapterInterface
 
         $result = $this->getResponse($response);
         if (count($result) == 0) {
-            throw new \DomainException('Repo not found');
+            throw new \DomainException('Repo ' . $repo . ' not found');
         }
 
         return $result[0];
