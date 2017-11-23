@@ -22,12 +22,27 @@ class Repo extends Gitlab implements RepoAdapterInterface
             throw new \DomainException('Invalid response code: ' . $response->getStatusCode());
         }
 
-        $result = $this->getResponse($response);
-        if (count($result) == 0) {
+        $results = $this->getResponse($response);
+        if (count($results) == 0) {
+            throw new \DomainException('Repo ' . $repo . ' not found');
+        }
+        $result = $this->getExactMatch($results, $repo);
+
+        if (!$result) {
             throw new \DomainException('Repo ' . $repo . ' not found');
         }
 
-        return $result[0];
+        return $result;
+    }
+
+    private function getExactMatch($results, $repo)
+    {
+        foreach ($results as $result) {
+            if (strtolower(trim((string)$result->name)) === strtolower(trim((string)$repo))) {
+                return $result;
+            }
+        }
+        return false;
     }
 
     public function getRepoId(string $repo)
